@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: uc2-nodejs-demo
+  namespace: uc2-nodejs-demo-dev
+  labels:
+    dxp.io/managed: "true"
+spec:
+  selector:
+    app: uc2-nodejs-demo
+  ports:
+  - port: 80
+    targetPort: 3000

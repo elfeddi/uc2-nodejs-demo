@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uc2-nodejs-demo
+  namespace: uc2-nodejs-demo-dev
+  labels:
+    app: uc2-nodejs-demo
+    dxp.io/managed: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: uc2-nodejs-demo
+  template:
+    metadata:
+      labels:
+        app: uc2-nodejs-demo
+    spec:
+      containers:
+      - name: uc2-nodejs-demo
+        image: harbor.harbor.svc.cluster.local/dxp/uc2-nodejs-demo:latest
+        ports:
+        - containerPort: 3000
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 3000
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 3000
