@@ -1,0 +1,9 @@
+{
+  "name": "uc2-nodejs-demo",
+  "version": "1.0.0",
+  "description": "UC2 nodejs demo - DxP",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  }
+}
